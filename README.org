@@ -1,0 +1,8 @@
+* About
+
+  This is the golang implementation of https://github.com/fivesheep/chnroutes
+
+* Todo
+
+** fix bugs like private ip route
+** refactor code
