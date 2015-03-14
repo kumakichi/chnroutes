@@ -143,8 +143,7 @@ func fetch_ip_data() []apnicData {
 	// fetch data from apnic
 	fmt.Println("Fetching data from apnic.net, it might take a few minutes, please wait...")
 
-	// url := "http://ftp.apnic.net/apnic/stats/apnic/delegated-apnic-latest"
-	url := "http://127.0.0.1:7788/delegated-apnic-latest"
+	url := "http://ftp.apnic.net/apnic/stats/apnic/delegated-apnic-latest"
 	resp, err := http.Get(url)
 	if err != nil {
 		fmt.Println(err.Error())
