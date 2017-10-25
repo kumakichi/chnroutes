@@ -3,7 +3,7 @@ package main
 var linux_upscript_header string = `#!/bin/bash
 export PATH="/bin:/sbin:/usr/sbin:/usr/bin"
 
-OLDGW=$(ip route show | grep '^default' | sed -e 's/default via \\([^ ]*\\).*/\\1/')
+OLDGW=$(ip route show | grep '^default' | sed -e 's/default via \([^ ]*\).*/\1/')
 
 if [ $OLDGW == '' ]; then
     exit 0
@@ -25,7 +25,7 @@ OLDGW=$(cat /tmp/vpn_oldgw)
 var mac_upscript_header string = `#!/bin/sh
 export PATH="/bin:/sbin:/usr/sbin:/usr/bin"
 
-OLDGW=$(netstat -nr | grep '^default' | grep -v 'ppp' | sed 's/default *\\([0-9\.]*\\) .*/\\1/' | awk '{if($1){print $1}}')
+OLDGW=$(netstat -nr | grep '^default' | grep -v 'ppp' | sed 's/default *\([0-9\.]*\) .*/\1/' | awk '{if($1){print $1}}')
 
 if [ ! -e /tmp/pptp_oldgw ]; then
     echo "${OLDGW}" > /tmp/pptp_oldgw
@@ -53,7 +53,7 @@ route delete 172.16.0.0/12 "${OLDGW}"
 route delete 192.168.0.0/16 "${OLDGW}"
 `
 
-var ms_upscript_header string = `for /F "tokens=3" %%* in ('route print ^| findstr "\\<0.0.0.0\\>"') do set "gw=%%*"\n`
+var ms_upscript_header string = `for /F "tokens=3" %%* in ('route print ^| findstr "\<0.0.0.0\>"') do set "gw=%%*"\n`
 
 var android_upscript_header string = `#!/bin/sh
 alias nestat='/system/xbin/busybox netstat'
